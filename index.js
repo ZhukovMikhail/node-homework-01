@@ -1,8 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-
-// const contactsPath = `${path}/__dirname`;
-const contactsPath = `${path}/__dirname`;
+const contacts = require('./contacts');
 
 const { Command } = require('commander');
 const program = new Command();
@@ -17,28 +15,39 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
-function invokeAction({ action, id, name, email, phone }) {
+const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case 'list':
-      // ...
+      const contactsList = await contacts.listContacts();
+      console.table(contactsList);
       break;
 
     case 'get':
-      // ... id
+      const contact = await contacts.getContactById(id);
+      console.log(contact);
       break;
 
     case 'add':
-      // ... name email phone
+      const newContacts = await contacts.addContact(name, email, phone);
+      console.log(newContacts);
       break;
 
     case 'remove':
-      // ... id
+      const removeContacts = await contacts.removeContact(id);
+      console.log(removeContacts);
+      break;
+    case 'update':
+      const updateContacts = await contacts.updateContact(
+        id,
+        name,
+        email,
+        phone,
+      );
+      console.log(updateContacts);
       break;
 
     default:
       console.warn('\x1B[31m Unknown action type!');
   }
-}
-
+};
 invokeAction(argv);
