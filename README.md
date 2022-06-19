@@ -1,4 +1,4 @@
-# 1.Получаем и выводим весь список контактов в виде таблицы (console.table): node index.js --action list
+# 1. Получаем и выводим весь список контактов в виде таблицы (console.table): node index.js --action list
 
 https://ibb.co/9TTcdLL
 
@@ -6,7 +6,7 @@ https://ibb.co/9TTcdLL
 
 https://ibb.co/h2m446P
 
-# 3.Добавялем контакт: node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
+# 3. Добавялем контакт: node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 
 https://ibb.co/ydZKGLZ
 
